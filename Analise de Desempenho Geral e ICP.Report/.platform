@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Analise de Desempenho Geral e ICP"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8e2fee4a-ba78-45e2-8ecc-b23fb5925a1a"
+  }
+}

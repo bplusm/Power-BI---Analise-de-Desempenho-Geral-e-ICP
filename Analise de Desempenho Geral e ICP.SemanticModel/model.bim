@@ -1,0 +1,732 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"funcionarios\",\"performance\",\"periodos\",\"regioes\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.127.1080.0 (24.03)"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "pt-BR",
+    "cultures": [
+      {
+        "name": "pt-BR",
+        "linguisticMetadata": {
+          "content": {
+            "Entities": {
+              "funcionarios.cargo": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "funcionarios",
+                    "ConceptualProperty": "cargo"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Cargo": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "funcionarios.departamento": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "funcionarios",
+                    "ConceptualProperty": "departamento"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Departamento": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              },
+              "regioes.nome_regiao": {
+                "Definition": {
+                  "Binding": {
+                    "ConceptualEntity": "regioes",
+                    "ConceptualProperty": "nome_regiao"
+                  }
+                },
+                "State": "Generated",
+                "Terms": [
+                  {
+                    "Regiao": {
+                      "Source": {
+                        "Agent": "PowerBI.VisualColumnRename",
+                        "Type": "External"
+                      },
+                      "State": "Suggested",
+                      "Weight": 0.9
+                    }
+                  }
+                ]
+              }
+            },
+            "Language": "en-US",
+            "Version": "2.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "relationships": [
+      {
+        "name": "AutoDetected_da285c4c-87f3-4e66-94ed-4103b7e01410",
+        "fromColumn": "funcionario_id",
+        "fromTable": "performance",
+        "toColumn": "funcionario_id",
+        "toTable": "funcionarios"
+      },
+      {
+        "name": "AutoDetected_20879510-4351-49a8-9d5d-c2c98fc77ead",
+        "fromColumn": "periodo_id",
+        "fromTable": "performance",
+        "toColumn": "periodo_id",
+        "toTable": "periodos"
+      },
+      {
+        "name": "AutoDetected_be7c6ff5-a58a-4f74-a829-a30e288303fa",
+        "fromColumn": "regiao_id",
+        "fromTable": "performance",
+        "toColumn": "regiao_id",
+        "toTable": "regioes"
+      }
+    ],
+    "sourceQueryCulture": "pt-BR",
+    "tables": [
+      {
+        "name": "DateTableTemplate_0d537021-3968-4143-9ce2-7e154098392e",
+        "annotations": [
+          {
+            "name": "__PBI_TemplateDateTable",
+            "value": "true"
+          },
+          {
+            "name": "DefaultItem",
+            "value": "DateHierarchy"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "3cc46917-54b2-45e1-8f05-f38309ecc351",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Ano",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "94ea4aea-4c38-4eff-a072-1538f4817505",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "93fc981c-c4cf-4537-a461-1cc5688ef991",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Mês",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isHidden": true,
+            "lineageTag": "f01b6e5b-f474-444c-8e66-e08f6244eb45",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "d2ef0ad1-afa6-4ea0-8457-565aa73ba319",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Trimestre",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Trim \" & [QuarterNo]",
+            "isHidden": true,
+            "lineageTag": "e477a4df-15e2-4cf3-9fd5-d0f56dda824a",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Dia",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "f82510c2-df17-422f-8ee9-5be942341e38",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Hierarquia de datas",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Ano",
+                "column": "Ano",
+                "lineageTag": "5f5da73d-4fca-4904-b562-ce279020f0e3",
+                "ordinal": 0
+              },
+              {
+                "name": "Trimestre",
+                "column": "Trimestre",
+                "lineageTag": "1c3537c4-ada8-43ae-b08e-09215697a7d3",
+                "ordinal": 1
+              },
+              {
+                "name": "Mês",
+                "column": "Mês",
+                "lineageTag": "aca9c346-c408-4bc1-a87f-43d4be5a77ce",
+                "ordinal": 2
+              },
+              {
+                "name": "Dia",
+                "column": "Dia",
+                "lineageTag": "0b723717-fcbf-4478-8a56-88776d520d0e",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "6b6aa36d-28dd-4012-b35a-641f385ed852"
+          }
+        ],
+        "isHidden": true,
+        "isPrivate": true,
+        "lineageTag": "656c9386-db24-470b-b8ed-771f7d02e23d",
+        "partitions": [
+          {
+            "name": "DateTableTemplate_0d537021-3968-4143-9ce2-7e154098392e",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(2015,1,1), Date(2015,1,1))",
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "funcionarios",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "funcionario_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "DataType"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "df6a9755-2ac4-4c27-915e-d8e330323582",
+            "sourceColumn": "funcionario_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "nome",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "62ff7cc1-9f3b-4c1e-853d-bb046192e05b",
+            "sourceColumn": "nome",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "departamento",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "cfb633b1-ee40-4a9d-9c16-11b0950f9083",
+            "sourceColumn": "departamento",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "cargo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "28d052a1-3488-4911-a57c-884a35324b12",
+            "sourceColumn": "cargo",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "eddcbc14-5d60-4990-a6c6-b4603ad71949",
+        "partitions": [
+          {
+            "name": "funcionarios",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Fonte = Excel.Workbook(File.Contents(\"C:\\Users\\Bruno\\Documents\\power bi\\BI de vendas\\DW\\funcionarios.xlsx\"), null, true),",
+                "    Sheet1_Sheet = Fonte{[Item=\"Sheet1\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Cabeçalhos Promovidos\" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),",
+                "    #\"Tipo Alterado\" = Table.TransformColumnTypes(#\"Cabeçalhos Promovidos\",{{\"funcionario_id\", Int64.Type}, {\"nome\", type text}, {\"departamento\", type text}, {\"cargo\", type text}})",
+                "in",
+                "    #\"Tipo Alterado\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "performance",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "funcionario_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "c7bcc40e-de60-4586-b6bd-8bda9bc42fab",
+            "sourceColumn": "funcionario_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "periodo_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "99342815-3b28-44c8-ad80-0f68ee7a0838",
+            "sourceColumn": "periodo_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "regiao_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "00528811-76fe-4b41-9440-a9522a0b10e2",
+            "sourceColumn": "regiao_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "meta_definida",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "4ec07ed6-eee8-4407-8a64-b0301e2f7520",
+            "sourceColumn": "meta_definida",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "meta_alcancada",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "c1fe5327-7b45-4faa-886f-1a23ab62d842",
+            "sourceColumn": "meta_alcancada",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "percentual_alcance",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "471638eb-a3b3-4e85-87e0-6bb918325f24",
+            "sourceColumn": "percentual_alcance",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ICP",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "d1dcc625-fe9b-46ea-ad2d-0c5c20ea4b48",
+            "sourceColumn": "ICP",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "%performance",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "double",
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "ef5e3a8d-eafe-45a5-b24c-591db79357f8",
+            "sourceColumn": "%performance",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Situação",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c68366aa-dd2c-4e88-81a2-a518e6105602",
+            "sourceColumn": "Situação",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "periodos_abaixo_80",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "727846e8-4551-4fe5-ae1a-726a10359810",
+            "sourceColumn": "periodos_abaixo_80",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "5965310b-d2d6-487a-b46b-a8fa4a4c393f",
+        "partitions": [
+          {
+            "name": "performance",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Fonte = Excel.Workbook(File.Contents(\"C:\\Users\\Bruno\\Documents\\power bi\\BI de vendas\\DW\\performance.xlsx\"), null, true),",
+                "    Sheet1_Sheet = Fonte{[Item=\"Sheet1\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Cabeçalhos Promovidos\" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),",
+                "    #\"Tipo Alterado\" = Table.TransformColumnTypes(#\"Cabeçalhos Promovidos\",{{\"funcionario_id\", Int64.Type}, {\"periodo_id\", Int64.Type}, {\"regiao_id\", Int64.Type}, {\"meta_definida\", Int64.Type}, {\"meta_alcancada\", Int64.Type}, {\"percentual_alcance\", type number}, {\"ICP\", Int64.Type}}),",
+                "    #\"Personalização Adicionada\" = Table.AddColumn(#\"Tipo Alterado\", \"%performance\", each [percentual_alcance]/100),",
+                "    #\"Tipo Alterado1\" = Table.TransformColumnTypes(#\"Personalização Adicionada\",{{\"%performance\", Percentage.Type}}),",
+                "    #\"Coluna Condicional Adicionada\" = Table.AddColumn(#\"Tipo Alterado1\", \"Situação\", each if [percentual_alcance] >= 85 then \"ICP aprovado\" else \"ICP não aprovado\")",
+                "in",
+                "    #\"Coluna Condicional Adicionada\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "periodos",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "periodo_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "89fd303d-2533-4f1b-a6ee-74075b030695",
+            "sourceColumn": "periodo_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "mes",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "a78b110d-d3ca-4315-a352-826eef8e935e",
+            "sourceColumn": "mes",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ano",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "dfc4c399-ed6a-41da-a2b6-0be4b6ea4a4a",
+            "sourceColumn": "ano",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "aacd0c5d-d376-4583-beb6-3c6c70d1c59a",
+        "partitions": [
+          {
+            "name": "periodos",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Fonte = Excel.Workbook(File.Contents(\"C:\\Users\\Bruno\\Documents\\power bi\\BI de vendas\\DW\\periodos.xlsx\"), null, true),",
+                "    Sheet1_Sheet = Fonte{[Item=\"Sheet1\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Cabeçalhos Promovidos\" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),",
+                "    #\"Tipo Alterado\" = Table.TransformColumnTypes(#\"Cabeçalhos Promovidos\",{{\"periodo_id\", Int64.Type}, {\"mes\", Int64.Type}, {\"ano\", Int64.Type}})",
+                "in",
+                "    #\"Tipo Alterado\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "regioes",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "regiao_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "2f209e3a-176f-4348-ab43-f86f930130a0",
+            "sourceColumn": "regiao_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "nome_regiao",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5c410ce8-bbf6-4db3-9cf5-ecf78efff112",
+            "sourceColumn": "nome_regiao",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "3f22cbfb-bce5-4d77-829e-b61165452e82",
+        "partitions": [
+          {
+            "name": "regioes",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Fonte = Excel.Workbook(File.Contents(\"C:\\Users\\Bruno\\Documents\\power bi\\BI de vendas\\DW\\regioes.xlsx\"), null, true),",
+                "    Sheet1_Sheet = Fonte{[Item=\"Sheet1\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Cabeçalhos Promovidos\" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),",
+                "    #\"Tipo Alterado\" = Table.TransformColumnTypes(#\"Cabeçalhos Promovidos\",{{\"regiao_id\", Int64.Type}, {\"nome_regiao\", type text}})",
+                "in",
+                "    #\"Tipo Alterado\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
